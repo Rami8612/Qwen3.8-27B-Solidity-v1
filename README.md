@@ -1,4 +1,4 @@
-# Qwen3.8-27B-Solidity-v1 (experimental)
+# Qwen3.8-27B-Solidity-v1
 
 **Model weights (GGUF + LoRA): [huggingface.co/Rami8612/Qwen3.8-27B-Solidity-v1-GGUF](https://huggingface.co/Rami8612/Qwen3.8-27B-Solidity-v1-GGUF)**
 
