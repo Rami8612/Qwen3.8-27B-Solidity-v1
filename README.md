@@ -1,6 +1,18 @@
 # Qwen3.8-27B-Solidity-v1
 
-**Model weights (GGUF + LoRA): [huggingface.co/Rami8612/Qwen3.8-27B-Solidity-v1-GGUF](https://huggingface.co/Rami8612/Qwen3.8-27B-Solidity-v1-GGUF)**
+<p>
+<a href="https://huggingface.co/Rami8612/Qwen3.8-27B-Solidity-v1-GGUF"><img alt="Model weights on Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model%20weights-c98500?style=for-the-badge"></a>
+<a href="https://huggingface.co/unsloth/Qwen3.8-27B"><img alt="Base model" src="https://img.shields.io/badge/Base-unsloth%2FQwen3.8--27B-199e70?style=for-the-badge"></a>
+<a href="https://github.com/ggml-org/llama.cpp"><img alt="GGUF for llama.cpp" src="https://img.shields.io/badge/GGUF-llama.cpp-3987e5?style=for-the-badge"></a>
+<a href="https://www.apache.org/licenses/LICENSE-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache--2.0-555555?style=for-the-badge"></a>
+</p>
+
+- **+23% F1 over the base model** and **+20% over DeepSeek V4 Pro** (1.6T MoE, ~60× larger) on 191 held-out smart contracts.
+- **+49% precision** over the base model: fewer false accusations, less noise per contract.
+- Built from **3,225 Solidity contracts**, **413 professional audits** and **3,987 judged findings** (2,998 training examples; the rest held out for testing).
+- **Custom imatrix GGUF mix (`Q4_K_Mix`)**: 43% less divergence than Q4_K_M + imatrix, and runs with **128k context on a single 32 GB GPU**.
+
+![Benchmark comparison: this model vs Qwen3.8-27B base vs DeepSeek V4 Pro](assets/benchmarks.png)
 
 A LoRA fine-tune of **Qwen3.8-27B** trained on **Solidity smart-contract audit data**, so that it handles smart contracts better than the base model. The data combines findings from professional smart-contract security audits and analyses of real-world exploits, linked to the vulnerable contract code. The repo also contains a quantization study with custom imatrix-guided GGUF mixes, built to run the model on a single 32 GB V100.
 
@@ -31,8 +43,6 @@ This is a personal end-to-end project covering dataset construction, LoRA traini
 ## Results at a glance
 
 On a held-out test set of 191 contracts (split by protocol, so no project appears in both train and test), compared with the **base model** and **DeepSeek V4 Pro**, a 1.6T-parameter MoE model (49B active), about 60× larger than this 27B model:
-
-![Benchmark comparison: this model vs Qwen3.8-27B base vs DeepSeek V4 Pro](assets/benchmarks.png)
 
 | | vs. Qwen3.8-27B base (27B) | vs. DeepSeek V4 Pro (1.6T MoE, 49B active) |
 |---|---|---|
