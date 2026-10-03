@@ -1,0 +1,15 @@
+# Modelos y datos: no van en el repo (los pesos están en Hugging Face)
+*.gguf
+*.safetensors
+*.bin
+data/
+quant_data/
+q/
+out/
+eval/*.jsonl
+eval/*_summary.json
+# Entorno
+.env
+__pycache__/
+*.pyc
+.venv/
