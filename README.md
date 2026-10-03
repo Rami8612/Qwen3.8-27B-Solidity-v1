@@ -224,11 +224,11 @@ This is a v1 experiment. Tests on real-world contracts beyond the benchmark show
 | `Qwen3.8-27B-Solidity-v1-Q4_K_Mix-imat.gguf` | 18.7 GB | **Recommended.** Custom per-tensor mix (variant I of the study): best fidelity at ~Q4 size |
 | `Qwen3.8-27B-Solidity-v1-Q4_K_M-imat.gguf` | 16.8 GB | Standard Q4_K_M with imatrix: smallest, longest context |
 | `Qwen3.8-27B-Solidity-v1-Q5_K_M-imat.gguf` | 19.5 GB | Standard Q5_K_M with imatrix: higher fidelity |
-| `Qwen3.8-27B-Solidity-v1-BF16-00001-of-00002.gguf` + `-00002-of-00002.gguf` | 54.7 GB | *Coming soon.* Full-precision BF16 weights, split in two (Hugging Face 50 GB file limit). llama.cpp loads them when pointed at the first part. Use them with the imatrix to make any other quant |
+| `Qwen3.8-27B-Solidity-v1-BF16-00001-of-00002.gguf` + `-00002-of-00002.gguf` | 54.7 GB | Full-precision BF16 weights, split in two (Hugging Face 50 GB file limit). llama.cpp loads them when pointed at the first part. Use them with the imatrix to make any other quant |
 | `Qwen3.8-27B-Solidity-v1-imatrix.gguf` | 13.6 MB | Importance matrix (6-domain calibration) |
 | `lora/` | 340 MB | LoRA adapter for [unsloth/Qwen3.8-27B](https://huggingface.co/unsloth/Qwen3.8-27B) (PEFT/Transformers), with tokenizer and chat template |
 
-**Make your own quant** once the BF16 files are up, e.g. Q6_K:
+**Make your own quant**, e.g. Q6_K:
 
 ```bash
 llama-quantize --imatrix Qwen3.8-27B-Solidity-v1-imatrix.gguf Qwen3.8-27B-Solidity-v1-BF16-00001-of-00002.gguf Qwen3.8-27B-Solidity-v1-Q6_K-imat.gguf Q6_K
